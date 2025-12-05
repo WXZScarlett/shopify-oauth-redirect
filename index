@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <p>正在打开应用...</p>
+    <script>
+      const q = new URLSearchParams(window.location.search);
+      const code = q.get("code");
+      const state = q.get("state");
+
+      if (code) {
+        window.location.href =
+          `atomformapp://shopify/login/callback?code=${code}&state=${state}`;
+      } else {
+        document.body.innerHTML = "<p>授权失败，请重试。</p>";
+      }
+    </script>
+  </body>
+</html>
